@@ -1,98 +1,126 @@
-import { useEffect, useState } from "react";
-import {
-  getActiveWearsFromFirestore,
-  getDressesFromFirestore,
-  getOthersFromFirestore,
-  getTechFromFirestore,
-  getAllFromFirestore,
-} from "../../firebase/firestore";
-import Image from "next/image";
+import React from "react";
 import "./style.scss";
 
-export default function ProductsList() {
-  const [activeWearsData, setActiveWearsData] = useState([]);
-  const [dressesData, setDressesData] = useState([]);
-  const [othersData, setOthersData] = useState([]);
-  const [techData, setTechData] = useState([]);
-  const [allData, setAllData] = useState([]);
+export default function ProductsList({
+  activeWearsData,
+  dressesData,
+  othersData,
+  techData,
+  allData,
+  selectedCategory,
+}) {
 
-  useEffect(() => {
-    const fetchFirestoreData = async () => {
-      // Fetch data from Firestore using your functions
-      const activeWears = await getActiveWearsFromFirestore();
-      const dresses = await getDressesFromFirestore();
-      const others = await getOthersFromFirestore();
-      const tech = await getTechFromFirestore();
-      const all = await getAllFromFirestore();
-
-      // Update state with fetched data
-      setActiveWearsData(activeWears);
-      setDressesData(dresses);
-      setOthersData(others);
-      setTechData(tech);
-      setAllData(all);
-    };
-
-    fetchFirestoreData();
-  }, []);
+  const renderProductsByCategory = () => {
+    switch (selectedCategory) {
+      case 'active-wears':
+        return activeWearsData.map((product) => (
+          <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('${product.image}')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            {selectedCategory}
+          </span>
+          <span className="product_name">{product.name}</span>
+        </li>
+        ));
+      case 'dresses':
+        return dressesData.map((product) => (
+          <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('${product.image}')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            {selectedCategory}
+          </span>
+          <span className="product_name">{product.name}</span>
+        </li>
+        ));
+      case 'others':
+        return othersData.map((product) => (
+          <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('${product.image}')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            {selectedCategory}
+          </span>
+          <span className="product_name">{product.name}</span>
+        </li>
+        ));
+      case 'tech':
+        return techData.map((product) => (
+          <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('${product.image}')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            {selectedCategory}
+          </span>
+          <span className="product_name">{product.name}</span>
+        </li>
+        ));
+      default:
+        // Render all products for 'all' category
+        return allData.map((product) => (
+          <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('${product.image}')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            {selectedCategory}
+          </span>
+          <span className="product_name">{product.name}</span>
+        </li>
+        ));
+    }
+  };
 
   return (
     <section className="product_section">
       <ul className="product_list">
-        <li
-          className="list"
-          style={{
-            backgroundImage: `linear-gradient(
-              180deg,
-              rgba(0, 0, 0, 5e-5) 30.66%,
-              rgba(0, 0, 0, 0.01953) 42.66%,
-              rgba(0, 0, 0, 0.5) 99.66%
-            ), url('/images/Profile.jpg')`,
-            backgroundSize: "cover",
-          }}
-        >
-          <span className="category">
-            Active Wears
-          </span>
-          <span className="product_name">Knitted Hat</span>
-        </li>
-        <li
-          className="list"
-          style={{
-            backgroundImage: `linear-gradient(
-              180deg,
-              rgba(0, 0, 0, 5e-5) 30.66%,
-              rgba(0, 0, 0, 0.01953) 42.66%,
-              rgba(0, 0, 0, 0.5) 99.66%
-            ), url('/images/Untitled_bg.png')`,
-            backgroundSize: "cover",
-          }}
-        >
-          <span className="category">
-            Active Wears
-          </span>
-          <span className="product_name">Crochet Hat and Furry Details</span>
-        </li>
-        <li
-          className="list"
-          style={{
-            backgroundImage: `linear-gradient(
-              180deg,
-              rgba(0, 0, 0, 5e-5) 30.66%,
-              rgba(0, 0, 0, 0.01953) 42.66%,
-              rgba(0, 0, 0, 0.5) 99.66%
-            ), url('/images/Untitled_bg.png')`,
-            backgroundSize: "cover",
-          }}
-        >
-          <span className="category">
-            Active Wears
-          </span>
-          <span className="product_name">Crochet Hat</span>
-        </li>
+        {renderProductsByCategory()}
       </ul>
-
-      {/* Repeat the above pattern for other categories */}
     </section>
   );
 }
