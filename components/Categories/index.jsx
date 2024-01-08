@@ -32,7 +32,7 @@ export default function CategoriesList({ onSelectCategory, selectedCategory }) {
           <li className="category" key={category.slug}>
             <a
               href={`/category/${category.slug}`}
-              className={`category_name ${selectedCategory === category.slug ? 'selected' : ''}`}
+              className={`category_name ${selectedCategory === category.slug ? 'active' : ''}`}
               onClick={() => onSelectCategory(category.slug)}
             >
               {category.name}

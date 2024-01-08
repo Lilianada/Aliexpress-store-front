@@ -20,6 +20,7 @@ export default function StoreFront() {
   const [othersData, setOthersData] = useState([]);
   const [techData, setTechData] = useState([]);
   const [allData, setAllData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchFirestoreData = async () => {
@@ -28,8 +29,7 @@ export default function StoreFront() {
       const dresses = await getDressesFromFirestore();
       const others = await getOthersFromFirestore();
       const tech = await getTechFromFirestore();
-      const all = await getAllFromFirestore();
-
+      const all = [...activeWears, ...dresses, ...others, ...tech];
       // Update state with fetched data
       setActiveWearsData(activeWears);
       setDressesData(dresses);

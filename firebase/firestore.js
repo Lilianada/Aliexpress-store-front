@@ -40,69 +40,63 @@ import {
 // Retrieve activeWears data from Firestore
 export const getActiveWearsFromFirestore = async () => {
     try {
-      const activeWearsRef = await firestore.collection('activeWears').get();
-      const activeWearsData = activeWearsRef.docs.reduce((acc, doc) => {
-        acc[doc.id] = doc.data().products;
-        return acc;
-      }, {});
-      console.log('Idea Lists Data:', activeWearsData);
+      const activeWearsRef = collection(db, 'activeWears');
+      const querySnapshot = await getDocs(activeWearsRef);
+      const activeWearsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log('Active Wears Data:', activeWearsData);
+      return activeWearsData;
     } catch (error) {
       console.error('Error retrieving activeWears from Firestore:', error);
     }
-};
-
-// Retrieve dresses data from Firestore
-export const getDressesFromFirestore = async () => {
+  };
+  
+  // Retrieve dresses data from Firestore
+  export const getDressesFromFirestore = async () => {
     try {
-      const dressesRef = await firestore.collection('dresses').get();
-      const dressesData = dressesRef.docs.reduce((acc, doc) => {
-        acc[doc.id] = doc.data().products;
-        return acc;
-      }, {});
+      const dressesRef = collection(db, 'dresses');
+      const querySnapshot = await getDocs(dressesRef);
+      const dressesData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       console.log('Dress Lists Data:', dressesData);
+      return dressesData;
     } catch (error) {
       console.error('Error retrieving dresses from Firestore:', error);
     }
-};
-
-// Retrieve others data from Firestore
-export const getOthersFromFirestore = async () => {
+  };
+  
+  // Retrieve others data from Firestore
+  export const getOthersFromFirestore = async () => {
     try {
-      const othersRef = await firestore.collection('others').get();
-      const othersData = othersRef.docs.reduce((acc, doc) => {
-        acc[doc.id] = doc.data().products;
-        return acc;
-      }, {});
+      const othersRef = collection(db, 'others');
+      const querySnapshot = await getDocs(othersRef);
+      const othersData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       console.log('Other Lists Data:', othersData);
+      return othersData;
     } catch (error) {
       console.error('Error retrieving others from Firestore:', error);
     }
-};
-
-// Retrieve tech data from Firestore
-export const getTechFromFirestore = async () => {
+  };
+  
+  // Retrieve tech data from Firestore
+  export const getTechFromFirestore = async () => {
     try {
-      const techRef = await firestore.collection('tech').get();
-      const techData = techRef.docs.reduce((acc, doc) => {
-        acc[doc.id] = doc.data().products;
-        return acc;
-      }, {});
-      console.log('Other Lists Data:', techData);
+      const techRef = collection(db, 'tech');
+      const querySnapshot = await getDocs(techRef);
+      const techData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log('Tech Lists Data:', techData);
+      return techData;
     } catch (error) {
       console.error('Error retrieving tech from Firestore:', error);
     }
-};
-
-// Retrieve all data from Firestore
-export const getAllFromFirestore = async () => {
-    try {
-      const allRef = await firestore.collection('all').get();
-      const allData = allRef.docs.reduce((acc, doc) => {
-        acc[doc.id] = doc.data().products;
-        return acc;
-      }, {});
-      console.log('All Lists Data:', allData);
-    } catch (error) {
-      console.error('Error retrieving all from Firestore:', error);
-    }
-};
+  };
