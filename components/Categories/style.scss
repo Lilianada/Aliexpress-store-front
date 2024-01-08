@@ -1,16 +1,18 @@
 @import "../../app/globals.scss";
 
 .categories_container {
-    .catrgories_list {
+
+    .categories_list {
         display: flex;
+        flex-wrap: wrap;
         gap: 0.5rem;
 
         .category {
-            width: 100%;
+            width: fit-content;
             height: 100%;
             background-color: $secondary;
             border-radius: 0.5rem;
-            padding: 1rem;
+            padding: .25rem .5rem;
             display: grid;
             place-items: center;
             cursor: pointer;
@@ -21,7 +23,7 @@
             }
 
             .category_name {
-                font-size: $font-sixteen;
+                font-size: $font-fourteen;
                 font-weight: 500;
                 color: $gray;
             }
