@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   getActiveWearsFromFirestore,
   getDressesFromFirestore,
   getOthersFromFirestore,
   getTechFromFirestore,
   getAllFromFirestore,
-} from '../../firebase/firestore'; 
-import Image from 'next/image'; 
+} from "../../firebase/firestore";
+import Image from "next/image";
 import "./style.scss";
 
 export default function ProductsList() {
@@ -39,8 +39,56 @@ export default function ProductsList() {
   return (
     <section className="product_section">
       <ul className="product_list">
-        <li className='list' style={{backgroundImage: `url('/images/Profile.jpg')`, backgroundSize: 'cover'}}>
-         
+        <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('/images/Profile.jpg')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            Active Wears
+          </span>
+          <span className="product_name">Knitted Hat</span>
+        </li>
+        <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('/images/Untitled_bg.png')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            Active Wears
+          </span>
+          <span className="product_name">Crochet Hat and Furry Details</span>
+        </li>
+        <li
+          className="list"
+          style={{
+            backgroundImage: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 5e-5) 30.66%,
+              rgba(0, 0, 0, 0.01953) 42.66%,
+              rgba(0, 0, 0, 0.5) 99.66%
+            ), url('/images/Untitled_bg.png')`,
+            backgroundSize: "cover",
+          }}
+        >
+          <span className="category">
+            Active Wears
+          </span>
+          <span className="product_name">Crochet Hat</span>
         </li>
       </ul>
 
