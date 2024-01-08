@@ -19,11 +19,21 @@
         display: grid;
         grid-template-columns: 200px 1fr 200px;
         gap: 1rem;
-        margin-left: 2rem;
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+            margin: 1rem;
+            
+        }
 
         .profile_pic {
             width: 180px;
             height: 180px;
+            margin-left: 2rem;
+
+            @media screen and (max-width: 768px) {
+                margin-left: 0;
+            }
 
             .profile {
                 width: 100%;
@@ -37,6 +47,10 @@
 
         .bio_texts {
             margin-top: 3rem;
+
+            @media screen and (max-width: 768px) {
+                margin-top: 0;
+            }
 
             .title {
                 font-size: $font-twentyEight;
