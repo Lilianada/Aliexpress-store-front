@@ -33,15 +33,17 @@
 
             @media screen and (max-width: 768px) {
                 margin-left: 0;
+                height: 120px;
             }
 
             .profile {
-                width: 100%;
-                height: 100%;
+                height: 180px;
                 border-radius: 50%;
                 object-fit: cover;
                 background-position: center;
                 border: 3px solid $white;
+                position: absolute;
+                top: 7rem;
             }
         }
 
@@ -91,6 +93,10 @@
         .share_button {
             margin-top: 3rem;
 
+            @media screen and (max-width: 768px) {
+                margin-top: 0;
+            }
+
             .share {
                 display: flex;
                 justify-content: center;
@@ -107,6 +113,10 @@
 
                 &:hover {
                     transform: scale(0.99, 1);
+                }
+
+                @media screen and (max-width: 508px) {
+                    width: 100%;
                 }
             }
         }
