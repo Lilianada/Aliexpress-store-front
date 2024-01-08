@@ -20,6 +20,11 @@
 
             &:hover {
                 transform: scale(1.05);
+                background-color: $neutral;
+            }
+
+            .active {
+                background-color: $neutral;
             }
 
             .category_name {

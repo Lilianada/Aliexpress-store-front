@@ -5,7 +5,9 @@ import {
   getOthersFromFirestore,
   getTechFromFirestore,
   getAllFromFirestore,
-} from '../../firebase/firestore'; // Import your Firestore functions
+} from '../../firebase/firestore'; 
+import Image from 'next/image'; 
+import "./style.scss";
 
 export default function ProductsList() {
   const [activeWearsData, setActiveWearsData] = useState([]);
@@ -36,9 +38,10 @@ export default function ProductsList() {
 
   return (
     <section className="product_section">
-      <h2>Active Wears</h2>
       <ul className="product_list">
-        
+        <li className='list' style={{backgroundImage: `url('/images/Profile.jpg')`, backgroundSize: 'cover'}}>
+         
+        </li>
       </ul>
 
       {/* Repeat the above pattern for other categories */}
