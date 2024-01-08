@@ -17,7 +17,7 @@
 
     .bio_wrap {
         display: grid;
-        grid-template-columns: 200px 1fr 200px;
+        grid-template-columns: 200px 1fr 150px;
         gap: 1rem;
 
         @media screen and (max-width: 768px) {
@@ -70,6 +70,24 @@
                 font-size: $font-fourteen;
                 color: $black;
                 margin-top: 1rem;
+
+                @media screen and (max-width: 768px) {
+                    margin-top: 0.75rem;
+                }
+
+                .see_more{
+                    background-color: transparent;
+                    border: none;
+
+                    span{
+                        color: $gray;
+                        font-size: $font-fourteen;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        gap: 2px;
+                    }
+                }
             }
 
             .social_icons {

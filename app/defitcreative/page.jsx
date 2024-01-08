@@ -1,4 +1,5 @@
-import HeaderBanner from '@/components/Header/page'
+'use client';
+import HeaderBanner from '@/components/Header'
 import React from 'react'
 
 export default function StoreFront() {
