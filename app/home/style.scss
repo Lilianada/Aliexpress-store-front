@@ -8,6 +8,12 @@
         border-top: 1px solid $neutral;
         padding: 1rem;
         margin-top: 2rem;
+
+        .body_nav{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
      }
 
 }
