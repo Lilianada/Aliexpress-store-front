@@ -25,7 +25,7 @@ export default function HeaderBanner() {
       {/* Header banner */}
       <div className="cover_photo">
         <Image
-          src="/images/canvas_moodboard.png"
+          src="/images/Untitled_bg.png"
           alt="banner"
           width={1920}
           height={180}
@@ -66,7 +66,7 @@ export default function HeaderBanner() {
               </button>
             )}
           </p>
-          {/* social media icons */}
+          {/* social media icons for desktop */}
           <div className="social_icons">
             <Link
               href="https://www.instagram.com/defitcreative/"
@@ -85,8 +85,29 @@ export default function HeaderBanner() {
             </Link>
           </div>
         </div>
-        <div className="share_button">
+
+        {/* social media icons and share button for mobile  */}
+        <div className="mobile_links">
+        <div className="social_icons">
+            <Link
+              href="https://www.instagram.com/defitcreative/"
+              className="icon"
+            >
+              <FaInstagram />
+            </Link>
+            <Link
+              href="https://www.pinterest.com/defitcreative/"
+              className="icon"
+            >
+              <FaPinterest />
+            </Link>
+            <Link href="https://www.tiktok.com/@defitcreative" className="icon">
+              <FaTiktok />
+            </Link>
+          </div>
+          <div className="share_button">
           <button className="share">Share</button>
+        </div>
         </div>
       </div>
     </section>

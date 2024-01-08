@@ -3,24 +3,20 @@ import './style.scss';
 
 const categories = [
   {
-    name: 'Activewear',
-    slug: 'activewear',
+    name: 'All',
+    slug: 'all',
   },
   {
-    name: 'Clothing',
-    slug: 'clothing',
+    name: 'Idea Lists',
+    slug: 'idea-lists',
   },
   {
-    name: 'Content Creation Essentials',
-    slug: 'content-creation-essentials',
+    name: 'Photos',
+    slug: 'phtots',
   },
   {
-    name: 'Home Decor',
-    slug: 'home-decor',
-  },
-  {
-    name: 'Tech',
-    slug: 'tech',
+    name: 'Videos',
+    slug: 'videos',
   },
 ];
 

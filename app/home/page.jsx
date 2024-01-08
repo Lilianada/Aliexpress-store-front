@@ -4,6 +4,7 @@ import SearchBar from '@/components/SearchBar';
 import CategoriesList from '@/components/Categories';
 import React from 'react';
 import './style.scss';
+import ProductsList from '@/components/Products';
 
 export default function StoreFront() {
   return (
@@ -14,7 +15,7 @@ export default function StoreFront() {
           <CategoriesList/>
            <SearchBar/>
         </div>
-
+<ProductsList/>
       </div>
     </div>
   )

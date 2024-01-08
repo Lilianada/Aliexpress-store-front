@@ -2,6 +2,16 @@ import React from 'react'
 
 export default function ProductsList() {
   return (
-    <div>ProductsList</div>
+    <section className="product_section">
+        <ul className="product_list">
+            {/* {
+                products.map((product) => (
+                    <li className="product">
+                    <a href={`/product/${product.slug}`} className='product_name'>{product.name}</a>
+                    </li>
+                ))
+            } */}
+        </ul>
+    </section>
   )
 }

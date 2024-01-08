@@ -95,6 +95,10 @@
                 display: flex;
                 gap: 0.5rem;
 
+                @media screen and (max-width: 768px) {
+                    display: none;
+                }
+
                 .icon {
                     width: 1.5rem;
                     height: 1.5rem;
@@ -108,33 +112,64 @@
             }
         }
 
-        .share_button {
-            margin-top: 3rem;
+        .mobile_links{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
 
-            @media screen and (max-width: 768px) {
-                margin-top: 0;
+            @media screen and (min-width: 769px) {
+                align-items: flex-start;
             }
-
-            .share {
+            
+            .social_icons {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 8rem;
-                height: 2.35rem;
-                background-color: $primary;
-                border-radius: 5px;
-                color: $white;
-                font-size: $font-sixteen;
-                font-weight: 600;
-                cursor: pointer;
-                transition: 0.5s ease-in-out;
+                gap: 0.5rem;
 
-                &:hover {
-                    transform: scale(0.99, 1);
+                @media screen and (min-width: 769px) {
+                    display: none;
                 }
 
-                @media screen and (max-width: 768px) {
-                    width: 100%;
+                .icon {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    background-color: $lightGray;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    display: grid;
+                    place-items: center;
+                    color: $white;
+                }
+            }
+
+            .share_button {
+                margin-top: 3rem;
+                width: 100%;
+    
+                @media screen and (max-width: 769px) {
+                    margin-top: 0;
+                }
+    
+                .share {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 8rem;
+                    height: 2.35rem;
+                    background-color: $primary;
+                    border-radius: 5px;
+                    color: $white;
+                    font-size: $font-sixteen;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: 0.5s ease-in-out;
+    
+                    &:hover {
+                        transform: scale(0.99, 1);
+                    }
+    
+                    @media screen and (max-width: 769px) {
+                        width: 100%;
+                    }
                 }
             }
         }
