@@ -39,20 +39,61 @@
             margin-top: 3rem;
 
             .title {
-                font-size: $font-thirtyTwo;
+                font-size: $font-twentyEight;
                 font-weight: 700;
                 color: $black;
             }
 
-            .subtitle{
-                font-size: $font-sixteen;
+            .subtitle {
+                font-size: $font-fourteen;
                 color: $lightGray;
+                margin-top: 0.5rem;
             }
 
-            .bio{
-                font-size: $font-sixteen;
+            .bio {
+                font-size: $font-fourteen;
                 color: $black;
-                margin-top: 2rem;
+                margin-top: 1rem;
+            }
+
+            .social_icons {
+                margin-top: 1rem;
+                display: flex;
+                gap: 0.5rem;
+
+                .icon {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    background-color: $lightGray;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    display: grid;
+                    place-items: center;
+                    color: $white;
+                }
+            }
+        }
+
+        .share_button {
+            margin-top: 3rem;
+
+            .share {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 8rem;
+                height: 2.35rem;
+                background-color: $primary;
+                border-radius: 5px;
+                color: $white;
+                font-size: $font-sixteen;
+                font-weight: 600;
+                cursor: pointer;
+                transition: 0.5s ease-in-out;
+
+                &:hover {
+                    transform: scale(0.99, 1);
+                }
             }
         }
     }
