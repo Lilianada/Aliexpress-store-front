@@ -111,22 +111,3 @@ input {
     border: none;
     outline: none;
 }
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.body__grid {
-    display: grid;
-    grid-template-columns: 68% 28%;
-    gap: 2rem;
-    width: 90%;
-    margin: 5rem auto;
-
-    @media screen and (max-width: 768px) {
-        grid-template-columns: 1fr;
-    }
-}

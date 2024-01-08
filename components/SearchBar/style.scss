@@ -1,0 +1,68 @@
+@import "../../app/globals.scss";
+
+.search_container{
+    display: grid;
+    grid-template-columns: 70% 25%;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+    margin-top: 1.5rem;
+    gap: .75rem;
+
+    @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr;
+    }
+
+    .search_bar{
+        height: 100%;
+        border: 1px solid $lightGray;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,47,54,.2);
+
+        .search_input{
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            font-size: $font-sixteen;
+
+            &::placeholder{
+                color: $lightGray;
+            }
+
+            &:focus{
+                border: none;
+                outline: none;
+            }
+        }
+
+        .search_icon{
+            width: 1.5rem;
+            height: 1.5rem;
+            color: $gray;
+        }
+    }
+
+    .search_button{
+        width: 100%;
+        height: 3rem;
+        background-color: $neutral;
+        border-radius: 0.5rem;
+        color: $black;
+        font-size: $font-sixteen;
+        font-weight: 500;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        margin-left: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,47,54,.2);
+
+        @media screen and (max-width: 500px) {
+            display: none;
+        }
+    }
+}

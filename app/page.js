@@ -1,4 +1,4 @@
-import StoreFront from './defitcreative/page'
+import StoreFront from './home/page'
 
 export default function Home() {
   return (
