@@ -46,7 +46,6 @@ export const getActiveWearsFromFirestore = async () => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log('Active Wears Data:', activeWearsData);
       return activeWearsData;
     } catch (error) {
       console.error('Error retrieving activeWears from Firestore:', error);
@@ -62,7 +61,6 @@ export const getActiveWearsFromFirestore = async () => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log('Dress Lists Data:', dressesData);
       return dressesData;
     } catch (error) {
       console.error('Error retrieving dresses from Firestore:', error);
@@ -78,7 +76,6 @@ export const getActiveWearsFromFirestore = async () => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log('Other Lists Data:', othersData);
       return othersData;
     } catch (error) {
       console.error('Error retrieving others from Firestore:', error);
@@ -94,7 +91,6 @@ export const getActiveWearsFromFirestore = async () => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log('Tech Lists Data:', techData);
       return techData;
     } catch (error) {
       console.error('Error retrieving tech from Firestore:', error);

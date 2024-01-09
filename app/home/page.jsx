@@ -5,7 +5,6 @@ import {
   getDressesFromFirestore,
   getOthersFromFirestore,
   getTechFromFirestore,
-  getAllFromFirestore,
 } from "../../firebase/firestore";
 import HeaderBanner from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
@@ -50,7 +49,10 @@ export default function StoreFront() {
       <HeaderBanner />
       <div className="body_container">
         <div className="body_nav">
-          <CategoriesList />
+          <CategoriesList
+          onSelectCategory={handleSelectCategory}
+          selectedCategory={selectedCategory}
+           />
           <SearchBar 
             onSelectCategory={handleSelectCategory} selectedCategory={selectedCategory}
           />
