@@ -46,9 +46,7 @@ export default function ProductsList({
              backgroundSize: "cover",
            }}
          >
-           <span className="category">
-             {selectedCategory === "all" ? '' : selectedCategory}
-           </span>
+            <span className="category">{product.category}</span>
            <span className="product_name">{product.name}</span>
          </li>
         ))}
