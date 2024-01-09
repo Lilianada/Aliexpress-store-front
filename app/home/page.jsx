@@ -12,7 +12,7 @@ import CategoriesList from "@/components/Categories";
 import ProductsList from "@/components/Products";
 import "./style.scss";
 import Pagination from "@/components/Pagination";
-import BackToTop from "@/components/BackToTop";
+import BackToTop from "@/components/ScrollToTop";
 
 export default function StoreFront() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -22,24 +22,23 @@ export default function StoreFront() {
   const [techData, setTechData] = useState([]);
   const [allData, setAllData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const productsPerPage = 24;
-
 
   // Define currentPage and pageNumbers for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumbers, setPageNumbers] = useState(1);
-   
+
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
   useEffect(() => {
     setIsLoading(true);
-  
+
     const fetchFirestoreData = async () => {
       try {
         let categoryData = [];
-  
+
         switch (selectedCategory) {
           case "active-wears":
             categoryData = await getActiveWearsFromFirestore();
@@ -67,7 +66,7 @@ export default function StoreFront() {
             setAllData(categoryData);
             break;
         }
-  
+
         setPageNumbers(Math.ceil(categoryData.length / productsPerPage));
       } catch (error) {
         console.error(error);
@@ -75,10 +74,9 @@ export default function StoreFront() {
         setIsLoading(false);
       }
     };
-  
+
     fetchFirestoreData();
   }, [selectedCategory]);
-  
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
@@ -88,7 +86,6 @@ export default function StoreFront() {
     setSearchQuery(query);
   };
 
-  
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -104,7 +101,7 @@ export default function StoreFront() {
       setCurrentPage(currentPage - 1);
     }
   };
-  
+
   return (
     <div className="main_container">
       <HeaderBanner />
@@ -130,8 +127,11 @@ export default function StoreFront() {
           searchQuery={searchQuery}
         />
       </div>
-      {
-        productsPerPage < allData.length && (
+      {productsPerPage > allData.length ||
+        productsPerPage > activeWearsData.length ||
+        productsPerPage > dressesData.length ||
+        productsPerPage > othersData.length ||
+        (productsPerPage > techData.length && (
           <Pagination
             handleClick={handleClick}
             handleNextClick={handleNextClick}
@@ -139,9 +139,12 @@ export default function StoreFront() {
             currentPage={currentPage}
             pageNumbers={pageNumbers}
           />
-        )
-      }
-      <BackToTop/>
+        ))}
+      {productsPerPage > allData.length ||
+        productsPerPage > activeWearsData.length ||
+        productsPerPage > dressesData.length ||
+        productsPerPage > othersData.length ||
+        (productsPerPage > techData.length && <BackToTop />)}
     </div>
   );
 }

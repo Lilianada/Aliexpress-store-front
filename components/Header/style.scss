@@ -165,7 +165,7 @@
     
                     &:hover {
                         background-color: darken($primary, 20%);
-                        transform: scale(1.05);
+                        transform: scale(0.99, 1);
                       } 
     
                     @media screen and (max-width: 769px) {
