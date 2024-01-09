@@ -13,10 +13,8 @@ export default function ProductsList({
   const getProductsByCategory = () => {
     switch (selectedCategory) {
       case 'active-wears':
-        console.log(activeWearsData);
         return activeWearsData;
       case 'dresses':
-        console.log(dressesData)
         return dressesData;
       case 'others':
         return othersData;
@@ -49,7 +47,7 @@ export default function ProductsList({
            }}
          >
            <span className="category">
-             {selectedCategory}
+             {selectedCategory === "all" ? '' : selectedCategory}
            </span>
            <span className="product_name">{product.name}</span>
          </li>

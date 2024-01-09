@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.scss';
-
 export default function CategoriesList({ onSelectCategory, selectedCategory }) {
   const categories = [
     {
@@ -25,15 +24,19 @@ export default function CategoriesList({ onSelectCategory, selectedCategory }) {
     },
   ];
 
+  const handleCategoryClick = (category) => {
+    onSelectCategory(category);
+    console.log(category);
+  };
+
   return (
     <section className="categories_container">
       <ul className="categories_list">
         {categories.map((category) => (
           <li className="category" key={category.slug}>
             <button
-              type="button"
               className={`category_name ${selectedCategory === category.slug ? 'active' : ''}`}
-              onClick={() => onSelectCategory(category.slug)}
+              onClick={() => handleCategoryClick(category.slug)}
             >
               {category.name}
             </button>

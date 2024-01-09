@@ -13,7 +13,7 @@ import ProductsList from "@/components/Products";
 import "./style.scss";
 
 export default function StoreFront() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [activeWearsData, setActiveWearsData] = useState([]);
   const [dressesData, setDressesData] = useState([]);
   const [othersData, setOthersData] = useState([]);
@@ -50,11 +50,12 @@ export default function StoreFront() {
       <div className="body_container">
         <div className="body_nav">
           <CategoriesList
-          onSelectCategory={handleSelectCategory}
-          selectedCategory={selectedCategory}
-           />
-          <SearchBar 
-            onSelectCategory={handleSelectCategory} selectedCategory={selectedCategory}
+            onSelectCategory={handleSelectCategory}
+            selectedCategory={selectedCategory}
+          />
+          <SearchBar
+            onSelectCategory={handleSelectCategory}
+            selectedCategory={selectedCategory}
           />
         </div>
         <ProductsList
@@ -63,6 +64,7 @@ export default function StoreFront() {
           othersData={othersData}
           techData={techData}
           allData={allData}
+          selectedCategory={selectedCategory}
         />
       </div>
     </div>
