@@ -13,6 +13,7 @@ import ProductsList from "@/components/Products";
 import "./style.scss";
 import Pagination from "@/components/Pagination";
 import BackToTop from "@/components/ScrollToTop";
+import Footer from "@/components/Footer";
 
 export default function StoreFront() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -140,6 +141,7 @@ export default function StoreFront() {
             pageNumbers={pageNumbers}
           />
         ))}
+        <Footer/>
       {productsPerPage > allData.length ||
         productsPerPage > activeWearsData.length ||
         productsPerPage > dressesData.length ||
