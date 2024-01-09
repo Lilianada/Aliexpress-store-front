@@ -25,7 +25,7 @@ export default function HeaderBanner() {
       {/* Header banner */}
       <div className="cover_photo">
         <Image
-          src="/images/defitcreative.jpg"
+          src="/images/defitcreative.png"
           alt="banner"
           width={1920}
           height={180}

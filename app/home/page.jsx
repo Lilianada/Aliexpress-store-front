@@ -23,15 +23,12 @@ export default function StoreFront() {
   const [allData, setAllData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-
   const productsPerPage = 24;
 
 
   // Define currentPage and pageNumbers for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumbers, setPageNumbers] = useState(1);
-  //  const currentPage = products.slice(indexOfFirstProduct, indexOfLastProduct);
-  //  const pageNumbers = Math.ceil(products.length / productsPerPage);
    
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -133,13 +130,17 @@ export default function StoreFront() {
           searchQuery={searchQuery}
         />
       </div>
-      <Pagination
-        handleClick={handleClick}
-        handleNextClick={handleNextClick}
-        handlePreviousClick={handlePreviousClick}
-        currentPage={currentPage}
-        pageNumbers={pageNumbers}
-      />
+      {
+        productsPerPage < allData.length && (
+          <Pagination
+            handleClick={handleClick}
+            handleNextClick={handleNextClick}
+            handlePreviousClick={handlePreviousClick}
+            currentPage={currentPage}
+            pageNumbers={pageNumbers}
+          />
+        )
+      }
       <BackToTop/>
     </div>
   );
