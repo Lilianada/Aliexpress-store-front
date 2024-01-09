@@ -164,8 +164,9 @@
                     transition: 0.5s ease-in-out;
     
                     &:hover {
-                        transform: scale(0.99, 1);
-                    }
+                        background-color: darken($primary, 20%);
+                        transform: scale(1.05);
+                      } 
     
                     @media screen and (max-width: 769px) {
                         width: 100%;

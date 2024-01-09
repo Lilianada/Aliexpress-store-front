@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { FaArrowUp } from "react-icons/fa6";
+import './style.scss';
 
 export default function BackToTop() {
   return (
-    <div
-    style={{color: "#000", backgroundColor: "blue", marginTop: '1rem'}}
-    >BackToTop</div>
+    <div className='backUp__button' >
+        <FaArrowUp size={16} />
+    </div>
   )
 }
