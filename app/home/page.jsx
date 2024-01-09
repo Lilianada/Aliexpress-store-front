@@ -20,21 +20,30 @@ export default function StoreFront() {
   const [techData, setTechData] = useState([]);
   const [allData, setAllData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchFirestoreData = async () => {
-      // Fetch data from Firestore using your functions
-      const activeWears = await getActiveWearsFromFirestore();
-      const dresses = await getDressesFromFirestore();
-      const others = await getOthersFromFirestore();
-      const tech = await getTechFromFirestore();
-      const all = [...activeWears, ...dresses, ...others, ...tech];
-      // Update state with fetched data
-      setActiveWearsData(activeWears);
-      setDressesData(dresses);
-      setOthersData(others);
-      setTechData(tech);
-      setAllData(all);
+      try {
+        // Fetch data from Firestore using your functions
+        const activeWears = await getActiveWearsFromFirestore();
+        const dresses = await getDressesFromFirestore();
+        const others = await getOthersFromFirestore();
+        const tech = await getTechFromFirestore();
+        const all = [...activeWears, ...dresses, ...others, ...tech];
+        // Update state with fetched data
+        setActiveWearsData(activeWears);
+        setDressesData(dresses);
+        setOthersData(others);
+        setTechData(tech);
+        setAllData(all);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchFirestoreData();
@@ -44,6 +53,11 @@ export default function StoreFront() {
     setSelectedCategory(category);
   };
 
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    onSearch(event.target.value);
+  };
+  
   return (
     <div className="main_container">
       <HeaderBanner />
@@ -65,6 +79,8 @@ export default function StoreFront() {
           techData={techData}
           allData={allData}
           selectedCategory={selectedCategory}
+          isLoading={isLoading}
+          searchQuery={searchTerm}
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.scss";
+import Spinner from "../Spinner";
 
 export default function ProductsList({
   activeWearsData,
@@ -8,6 +9,8 @@ export default function ProductsList({
   techData,
   allData,
   selectedCategory,
+  isLoading,
+  searchQuery,
 }) {
 
   const getProductsByCategory = () => {
@@ -27,11 +30,23 @@ export default function ProductsList({
     }
   };
 
-  const filteredProducts = getProductsByCategory();
+  const getFilteredProducts = () => {
+    const products = getProductsByCategory();
+    if (searchQuery) {
+      // Filter products based on search query
+      return products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+    return products;
+  };
+
+  const filteredProducts = getFilteredProducts();
 
   return (
     <section className="product_section">
       <ul className="product_list">
+        {isLoading && <Spinner/>}
       {filteredProducts.map((product) => (
            <li
            className="list"

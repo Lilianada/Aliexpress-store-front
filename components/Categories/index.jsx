@@ -26,7 +26,6 @@ export default function CategoriesList({ onSelectCategory, selectedCategory }) {
 
   const handleCategoryClick = (category) => {
     onSelectCategory(category);
-    console.log(category);
   };
 
   return (
