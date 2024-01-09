@@ -12,6 +12,7 @@ import CategoriesList from "@/components/Categories";
 import ProductsList from "@/components/Products";
 import "./style.scss";
 import Pagination from "@/components/Pagination";
+import BackToTop from "@/components/BackToTop";
 
 export default function StoreFront() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -23,32 +24,64 @@ export default function StoreFront() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const productsPerPage = 24;
+
+
+  // Define currentPage and pageNumbers for pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageNumbers, setPageNumbers] = useState(1);
+  //  const currentPage = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  //  const pageNumbers = Math.ceil(products.length / productsPerPage);
+   
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
   useEffect(() => {
     setIsLoading(true);
+  
     const fetchFirestoreData = async () => {
       try {
-        // Fetch data from Firestore using your functions
-        const activeWears = await getActiveWearsFromFirestore();
-        const dresses = await getDressesFromFirestore();
-        const others = await getOthersFromFirestore();
-        const tech = await getTechFromFirestore();
-        const all = [...activeWears, ...dresses, ...others, ...tech];
-        // Update state with fetched data
-        setActiveWearsData(activeWears);
-        setDressesData(dresses);
-        setOthersData(others);
-        setTechData(tech);
-        setAllData(all);
-        setIsLoading(false);
+        let categoryData = [];
+  
+        switch (selectedCategory) {
+          case "active-wears":
+            categoryData = await getActiveWearsFromFirestore();
+            setActiveWearsData(categoryData);
+            break;
+          case "dresses":
+            categoryData = await getDressesFromFirestore();
+            setDressesData(categoryData);
+            break;
+          case "others":
+            categoryData = await getOthersFromFirestore();
+            setOthersData(categoryData);
+            break;
+          case "tech":
+            categoryData = await getTechFromFirestore();
+            setTechData(categoryData);
+            break;
+          default:
+            // Handle "all" case or other categories if needed
+            const activeWears = await getActiveWearsFromFirestore();
+            const dresses = await getDressesFromFirestore();
+            const others = await getOthersFromFirestore();
+            const tech = await getTechFromFirestore();
+            categoryData = [...activeWears, ...dresses, ...others, ...tech];
+            setAllData(categoryData);
+            break;
+        }
+  
+        setPageNumbers(Math.ceil(categoryData.length / productsPerPage));
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setIsLoading(false);
       }
     };
-
+  
     fetchFirestoreData();
-  }, []);
+  }, [selectedCategory]);
+  
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
@@ -56,6 +89,23 @@ export default function StoreFront() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+  };
+
+  
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleNextClick = () => {
+    if (currentPage < pageNumbers) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousClick = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
   
   return (
@@ -83,7 +133,14 @@ export default function StoreFront() {
           searchQuery={searchQuery}
         />
       </div>
-      <Pagination />
+      <Pagination
+        handleClick={handleClick}
+        handleNextClick={handleNextClick}
+        handlePreviousClick={handlePreviousClick}
+        currentPage={currentPage}
+        pageNumbers={pageNumbers}
+      />
+      <BackToTop/>
     </div>
   );
 }
