@@ -38,6 +38,10 @@ export default function ProductsList({
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
+    if (selectedCategory === 'all') {
+      // Sort products by category
+      return products.sort((a, b) => a.category.localeCompare(b.category));
+    }
     return products;
   };
 

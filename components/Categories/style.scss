@@ -23,16 +23,28 @@
                 background-color: $neutral;
             }
 
-            .active {
-                background-color: $neutral;
-            }
-
-            .category_name {
+            
+            .category_button {
                 font-size: $font-fourteen;
                 font-weight: 500;
                 color: $gray;
                 background: transparent;
+
             }
+
         }
+        .active {
+           background-color: $primary ;
+
+           .category_button {
+           color: $white;
+           }
+
+           &:hover {
+            transform: scale(1.05);
+            background-color: $primary;
+            
+        }
+       }
     }
 }

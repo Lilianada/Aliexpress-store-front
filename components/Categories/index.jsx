@@ -32,9 +32,9 @@ export default function CategoriesList({ onSelectCategory, selectedCategory }) {
     <section className="categories_container">
       <ul className="categories_list">
         {categories.map((category) => (
-          <li className="category" key={category.slug}>
+          <li className={`category ${selectedCategory === category.slug ? 'active' : ''}`} key={category.slug}>
             <button
-              className={`category_name ${selectedCategory === category.slug ? 'active' : ''}`}
+              className='category_button'
               onClick={() => handleCategoryClick(category.slug)}
             >
               {category.name}
