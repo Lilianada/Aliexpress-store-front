@@ -11,6 +11,7 @@ import SearchBar from "@/components/SearchBar";
 import CategoriesList from "@/components/Categories";
 import ProductsList from "@/components/Products";
 import "./style.scss";
+import Pagination from "@/components/Pagination";
 
 export default function StoreFront() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -82,6 +83,7 @@ export default function StoreFront() {
           searchQuery={searchQuery}
         />
       </div>
+      <Pagination />
     </div>
   );
 }
