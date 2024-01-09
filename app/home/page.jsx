@@ -20,7 +20,7 @@ export default function StoreFront() {
   const [techData, setTechData] = useState([]);
   const [allData, setAllData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -53,9 +53,8 @@ export default function StoreFront() {
     setSelectedCategory(category);
   };
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    onSearch(event.target.value);
+  const handleSearch = (query) => {
+    setSearchQuery(query);
   };
   
   return (
@@ -69,7 +68,7 @@ export default function StoreFront() {
           />
           <SearchBar
             onSelectCategory={handleSelectCategory}
-            selectedCategory={selectedCategory}
+            onSearch={handleSearch}
           />
         </div>
         <ProductsList
@@ -80,7 +79,7 @@ export default function StoreFront() {
           allData={allData}
           selectedCategory={selectedCategory}
           isLoading={isLoading}
-          searchQuery={searchTerm}
+          searchQuery={searchQuery}
         />
       </div>
     </div>
