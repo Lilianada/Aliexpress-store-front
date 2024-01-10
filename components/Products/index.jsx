@@ -12,18 +12,17 @@ export default function ProductsList({
   isLoading,
   searchQuery,
 }) {
-
   const getProductsByCategory = () => {
     switch (selectedCategory) {
-      case 'active-wears':
+      case "active-wears":
         return activeWearsData;
-      case 'dresses':
+      case "dresses":
         return dressesData;
-      case 'others':
+      case "others":
         return othersData;
-      case 'tech':
+      case "tech":
         return techData;
-      case 'all':
+      case "all":
       default:
         // Combine products from all categories
         return allData;
@@ -38,7 +37,7 @@ export default function ProductsList({
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-    if (selectedCategory === 'all') {
+    if (selectedCategory === "all") {
       // Sort products by category
       return products.sort((a, b) => a.category.localeCompare(b.category));
     }
@@ -49,25 +48,25 @@ export default function ProductsList({
 
   return (
     <section className="product_section">
+        {isLoading && <Spinner />}
       <ul className="product_list">
-        {isLoading && <Spinner/>}
-      {filteredProducts.map((product) => (
-           <li
-           className="list"
-           key={product.id}
-           style={{
-             backgroundImage: `linear-gradient(
+        {filteredProducts.map((product) => (
+          <li
+            className="list"
+            key={product.id}
+            style={{
+              backgroundImage: `linear-gradient(
                180deg,
                rgba(0, 0, 0, 5e-5) 30.66%,
                rgba(0, 0, 0, 0.01953) 42.66%,
                rgba(0, 0, 0, 0.5) 99.66%
              ), url('${product.image}')`,
-             backgroundSize: "cover",
-           }}
-         >
+              backgroundSize: "cover",
+            }}
+          >
             <span className="category">{product.category}</span>
-           <span className="product_name">{product.name}</span>
-         </li>
+            <span className="product_name">{product.name}</span>
+          </li>
         ))}
       </ul>
     </section>

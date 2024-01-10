@@ -2,6 +2,9 @@
 
 .main_container {
     width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
 
     .body_container {
         border-top: 1px solid $neutral;
