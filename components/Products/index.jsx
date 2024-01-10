@@ -1,6 +1,7 @@
 import React from "react";
-import "./style.scss";
 import Spinner from "../Spinner";
+import Link from "next/link";
+import "./style.scss";
 
 export default function ProductsList({
   activeWearsData,
@@ -51,6 +52,7 @@ export default function ProductsList({
         {isLoading && <Spinner />}
       <ul className="product_list">
         {filteredProducts.map((product) => (
+          <a href={product.links}>
           <li
             className="list"
             key={product.id}
@@ -60,13 +62,16 @@ export default function ProductsList({
                rgba(0, 0, 0, 5e-5) 30.66%,
                rgba(0, 0, 0, 0.01953) 42.66%,
                rgba(0, 0, 0, 0.5) 99.66%
-             ), url('${product.image}')`,
+             ), url('https://firebasestorage.googleapis.com/v0/b/aliexpress-storefront.appspot.com/o/${encodeURIComponent(product.image)}?alt=media')`,
               backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
+            
           >
             <span className="category">{product.category}</span>
             <span className="product_name">{product.name}</span>
           </li>
+          </a>
         ))}
       </ul>
     </section>

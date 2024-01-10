@@ -13,28 +13,11 @@ http://www.apache.org/licenses/LICENSE-2.0
 * limitations under the License.
 */
 import {
-    addDoc,
     collection,
-    deleteDoc,
-    doc,
-    getDoc,
     getDocs,
-    onSnapshot,
-    orderBy,
-    query,
-    serverTimestamp,
-    setDoc,
-    updateDoc,
   } from "firebase/firestore";
-  import { auth, db } from "./firebase";
-  import {
-    createUserWithEmailAndPassword,
-    getAuth,
-    sendEmailVerification,
-    signInWithEmailAndPassword,
-    setPersistence,
-    browserSessionPersistence,
-  } from "firebase/auth";
+  import { db } from "./firebase";
+  
 
 
 // Retrieve activeWears data from Firestore
