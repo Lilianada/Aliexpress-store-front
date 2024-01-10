@@ -1,6 +1,5 @@
 import React from "react";
 import Spinner from "../Spinner";
-import Link from "next/link";
 import "./style.scss";
 
 export default function ProductsList({
@@ -32,18 +31,27 @@ export default function ProductsList({
 
   const getFilteredProducts = () => {
     const products = getProductsByCategory();
+  
     if (searchQuery) {
       // Filter products based on search query
       return products.filter((product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
+  
     if (selectedCategory === "all") {
-      // Sort products by category
-      return products.sort((a, b) => a.category.localeCompare(b.category));
+      // Sort products by category, handling undefined categories
+      return products.sort((a, b) => {
+        const categoryA = a.category || ""; // Use an empty string if category is undefined
+        const categoryB = b.category || "";
+  
+        return categoryA.localeCompare(categoryB);
+      });
     }
+  
     return products;
   };
+  
 
   const filteredProducts = getFilteredProducts();
 
@@ -52,7 +60,7 @@ export default function ProductsList({
         {isLoading && <Spinner />}
       <ul className="product_list">
         {filteredProducts.map((product, idx) => (
-          <a href={product.links}>
+          <a href={product.links} target="_blank" >
           <li
             className="list"
             key={idx}
@@ -64,7 +72,8 @@ export default function ProductsList({
                rgba(0, 0, 0, 0.5) 99.66%
              ), url('https://firebasestorage.googleapis.com/v0/b/aliexpress-storefront.appspot.com/o/${encodeURIComponent(product.image)}?alt=media')`,
               backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center top",
             }}
             
           >
@@ -74,6 +83,9 @@ export default function ProductsList({
           </a>
         ))}
       </ul>
+        {filteredProducts.length === 0 && (
+          <p className="no_products">No products found.</p>
+        )}
     </section>
   );
 }
