@@ -30,6 +30,7 @@ export default function HeaderBanner() {
           width={1920}
           height={180}
           className="photo"
+          priority
         />
       </div>
       {/* Profile picture and bio */}

@@ -51,11 +51,11 @@ export default function ProductsList({
     <section className="product_section">
         {isLoading && <Spinner />}
       <ul className="product_list">
-        {filteredProducts.map((product) => (
+        {filteredProducts.map((product, idx) => (
           <a href={product.links}>
           <li
             className="list"
-            key={product.id}
+            key={idx}
             style={{
               backgroundImage: `linear-gradient(
                180deg,
