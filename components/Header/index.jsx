@@ -61,12 +61,13 @@ export default function HeaderBanner() {
       <div className="bio_wrap">
         <div className="profile_pic">
           <Image
-            src="/images/profile.jpg"
+            src="/images/Profile.jpg"
             alt="profile picture"
             width={180}
             height={180}
             className="profile"
             priority
+            
           />
         </div>
         <div className="bio_texts">
