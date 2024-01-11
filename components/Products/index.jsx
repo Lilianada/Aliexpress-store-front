@@ -40,9 +40,9 @@ export default function ProductsList({
     }
   
     if (selectedCategory === "all") {
-      // Sort products by category, handling undefined categories
+      
       return products.sort((a, b) => {
-        const categoryA = a.category || ""; // Use an empty string if category is undefined
+        const categoryA = a.category || ""; 
         const categoryB = b.category || "";
   
         return categoryA.localeCompare(categoryB);
@@ -57,7 +57,6 @@ export default function ProductsList({
 
   return (
     <section className="product_section">
-        {isLoading && <Spinner />}
       <ul className="product_list">
         {filteredProducts.map((product, idx) => (
           <a href={product.links} target="_blank" >
@@ -83,9 +82,13 @@ export default function ProductsList({
           </a>
         ))}
       </ul>
-        {filteredProducts.length === 0 && (
-          <p className="no_products">No products found.</p>
-        )}
+        {
+          isLoading ? <Spinner /> : (
+            filteredProducts.length === 0 && (
+              <p className="no_products">No products found.</p>
+            )
+          )
+        }
     </section>
   );
 }

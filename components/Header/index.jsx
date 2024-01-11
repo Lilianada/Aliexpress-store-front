@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaPinterest, FaTiktok, FaAngleDown, FaAngleUp } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaPinterest,
+  FaTiktok,
+  FaAngleDown,
+  FaAngleUp,
+  FaYoutube,
+} from "react-icons/fa";
 import "./style.scss";
 
 export default function HeaderBanner() {
@@ -20,6 +27,23 @@ export default function HeaderBanner() {
     setShowMore(!showMore);
   };
 
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Defitcreative",
+          text: bioText,
+          url: "https://defitcreative-aliexpress.vercel.app", // Change this to your actual URL
+        })
+        .then(() => console.log("Successfully shared"))
+        .catch((error) => console.error("Error sharing:", error));
+    } else {
+      alert(
+        "Web Share API not supported in your browser. You can manually share the link."
+      );
+    }
+  };
+
   return (
     <section className="header_banner">
       {/* Header banner */}
@@ -31,7 +55,7 @@ export default function HeaderBanner() {
           height={180}
           className="photo"
           priority
-          />
+        />
       </div>
       {/* Profile picture and bio */}
       <div className="bio_wrap">
@@ -42,6 +66,7 @@ export default function HeaderBanner() {
             width={180}
             height={180}
             className="profile"
+            priority
           />
         </div>
         <div className="bio_texts">
@@ -49,14 +74,12 @@ export default function HeaderBanner() {
           <h2 className="subtitle">Earns Commission on every purchase</h2>
           <p className="bio">
             {visibleText}
-            {showMore || words.length < initialWordLimit ? null : "..."}
-            {" "}
-            <br/>
+            {showMore || words.length < initialWordLimit ? null : "..."} <br />
             {words.length > initialWordLimit && (
               <button className="see_more" onClick={handleShowMore}>
                 {showMore ? (
                   <span>
-                     See less <FaAngleUp/>
+                    See less <FaAngleUp />
                   </span>
                 ) : (
                   <span>
@@ -84,12 +107,18 @@ export default function HeaderBanner() {
             <Link href="https://www.tiktok.com/@defitcreative" className="icon">
               <FaTiktok />
             </Link>
+            <Link
+              href="https://www.youtube.com/@defitcreative"
+              className="icon"
+            >
+              <FaYoutube />
+            </Link>
           </div>
         </div>
 
         {/* social media icons and share button for mobile  */}
         <div className="mobile_links">
-        <div className="social_icons">
+          <div className="social_icons">
             <Link
               href="https://www.instagram.com/defitcreative/"
               className="icon"
@@ -105,10 +134,16 @@ export default function HeaderBanner() {
             <Link href="https://www.tiktok.com/@defitcreative" className="icon">
               <FaTiktok />
             </Link>
+            <Link
+              href="https://www.youtube.com/@defitcreative"
+              className="icon"
+            >
+              <FaYoutube />
+            </Link>
           </div>
           <div className="share_button">
-          <button className="share">Share</button>
-        </div>
+            <button className="share" onClick={handleShare}>Share</button>
+          </div>
         </div>
       </div>
     </section>
