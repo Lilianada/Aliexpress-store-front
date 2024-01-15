@@ -33,7 +33,7 @@ export default function HeaderBanner() {
         .share({
           title: "Defitcreative",
           text: bioText,
-          url: "https://defitcreative-aliexpress.vercel.app", // Change this to your actual URL
+          url: "https://defitcreative-aliexpress.vercel.app", 
         })
         .then(() => console.log("Successfully shared"))
         .catch((error) => console.error("Error sharing:", error));
@@ -61,13 +61,12 @@ export default function HeaderBanner() {
       <div className="bio_wrap">
         <div className="profile_pic">
           <Image
-            src="/images/Profile.jpg"
+            src="/images/Lilian.jpg"
             alt="profile picture"
             width={180}
             height={180}
             className="profile"
             priority
-            
           />
         </div>
         <div className="bio_texts">

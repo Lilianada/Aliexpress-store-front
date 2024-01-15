@@ -52,7 +52,6 @@ export default function ProductsList({
     return products;
   };
   
-
   const filteredProducts = getFilteredProducts();
 
   return (
