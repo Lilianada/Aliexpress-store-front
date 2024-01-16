@@ -44,6 +44,20 @@ export default function HeaderBanner() {
     }
   };
 
+  const handleCopyToClipboard = () => {
+    const url = "https://defitcreative-aliexpress.vercel.app";
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        console.log("URL copied to clipboard");
+        // You can display a success message to the user
+      })
+      .catch(err => {
+        console.error("Failed to copy URL: ", err);
+        // Handle errors (show error message to the user)
+      });
+  };
+  
+
   return (
     <section className="header_banner">
       {/* Header banner */}
@@ -142,7 +156,7 @@ export default function HeaderBanner() {
             </Link>
           </div>
           <div className="share_button">
-            <button className="share" onClick={handleShare}>Share</button>
+            <button className="share" onClick={handleCopyToClipboard}>Copy link</button>
           </div>
         </div>
       </div>
