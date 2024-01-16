@@ -48,7 +48,7 @@ export default function HeaderBanner() {
     const url = "https://defitcreative-aliexpress.vercel.app";
     navigator.clipboard.writeText(url)
       .then(() => {
-        console.log("URL copied to clipboard");
+        alert("URL copied to clipboard");
         // You can display a success message to the user
       })
       .catch(err => {

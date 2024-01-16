@@ -5,6 +5,9 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 3rem;
+    min-height: 100vh;
+    height: 100%;
 
     .body_container {
         border-top: 1px solid $neutral;
